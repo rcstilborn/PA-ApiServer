@@ -1,0 +1,22 @@
+{
+  "name": "ApiServer",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "node app.js",
+    "test": "mocha mytest.js"
+  },
+  "dependencies": {
+    "body-parser": "latest",
+    "express": ">= 4.0.0",
+    "morgan": "latest",
+    "multer": "^1.1.0",
+    "passport": "latest",
+    "passport-http": "latest",
+    "util": "^0.10.3"
+  },
+  "devDependencies": {
+    "mocha": "^2.2.4",
+    "should": "^6.0.1"
+  }
+}

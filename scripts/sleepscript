@@ -1,0 +1,4 @@
+echo "Started"
+sleep 10
+echo "Stopping"
+exit 0
