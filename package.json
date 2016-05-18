@@ -1,14 +1,17 @@
 {
-  "name": "ApiServer",
+  "name": "PA_ApiServer",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "start": "node app.js",
-    "test": "mocha mytest.js"
+    "test": "./node_modules/mocha/bin/mocha --recursive tests",
+    "acc_test": "./node_modules/newman/bin/newman -c tests/ApiServer%20Acceptance.postman_collection.json"
   },
   "dependencies": {
     "body-parser": "latest",
     "express": ">= 4.0.0",
+    "fluent-logger": "^1.1.1",
+    "log4js": "^0.6.36",
     "morgan": "latest",
     "multer": "^1.1.0",
     "passport": "latest",
@@ -16,7 +19,9 @@
     "util": "^0.10.3"
   },
   "devDependencies": {
+    "chai": "^3.5.0",
     "mocha": "^2.2.4",
+    "newman": "^2.0.9",
     "should": "^6.0.1"
   }
 }

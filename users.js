@@ -8,6 +8,11 @@ var users = [
   , { id: 234, username: 'joe', password: 'birthday', email: 'joe@example.com' }
 ];
 
+exports.authenticate = function(req, res){
+  console.log('files.retrieve: ' + req.params.name);
+  res.sendFile(req.params.name, {root:"./files/" + req.user.id});
+};
+
 function findByUsername(username, fn) {
   for (var i = 0, len = users.length; i < len; i++) {
     var user = users[i];

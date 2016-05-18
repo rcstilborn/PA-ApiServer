@@ -1,0 +1,212 @@
+{
+	"id": "0d6bd55d-2da0-99b4-46fd-cc359a6e001d",
+	"name": "ApiServer Acceptance",
+	"description": "",
+	"order": [],
+	"folders": [
+		{
+			"id": "a4beef17-3340-ff97-a0e6-cd91e0d154c8",
+			"name": "Authorization",
+			"description": "",
+			"order": [
+				"aa0bee55-f583-3348-947b-bd20744f4b50",
+				"66961535-1400-f4a7-9e98-b7c028e6e47d",
+				"2bde2e8f-2276-e903-fa20-87d7176b98ab"
+			],
+			"owner": 0
+		},
+		{
+			"id": "5f6233fd-ffdc-7c26-2b6a-b8477de829c2",
+			"name": "Files",
+			"description": "",
+			"order": [
+				"95bc745b-6304-97dd-967f-1a75666afa51",
+				"78f41e1c-b5e1-693d-729f-8b05dc3fe37a",
+				"01f15fb5-f91b-1895-3493-a6f1295c9f07",
+				"d81a4ab7-c1c4-9a20-c0c1-94d54decfee5"
+			],
+			"owner": 0
+		}
+	],
+	"timestamp": 1463509339980,
+	"owner": 0,
+	"remoteLink": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "01f15fb5-f91b-1895-3493-a6f1295c9f07",
+			"headers": "Authorization: Basic eW91cnVzZXJuYW1lOnlvdXJwYXNzd29yZA==\n",
+			"url": "{{url}}/api/files",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "POST",
+			"data": [
+				{
+					"key": "file",
+					"value": "files/iris.txt",
+					"type": "file",
+					"enabled": true
+				}
+			],
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Successful POST request\"] = responseCode.code === 201 || responseCode.code === 202;",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{username}}",
+				"password": "{{password}}",
+				"saveToRequest": true
+			},
+			"time": 1463528128811,
+			"name": "POST new file",
+			"description": "",
+			"collectionId": "0d6bd55d-2da0-99b4-46fd-cc359a6e001d",
+			"responses": []
+		},
+		{
+			"id": "2bde2e8f-2276-e903-fa20-87d7176b98ab",
+			"headers": "Authorization: Basic eW91cnVzZXJuYW1lOmZvb2Jhcg==\n",
+			"url": "{{url}}/api/jobs/all",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 401\"] = responseCode.code === 401;",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{username}}",
+				"password": "foobar",
+				"saveToRequest": true
+			},
+			"time": 1463511206328,
+			"name": "Bad password",
+			"description": "",
+			"collectionId": "0d6bd55d-2da0-99b4-46fd-cc359a6e001d",
+			"responses": []
+		},
+		{
+			"id": "66961535-1400-f4a7-9e98-b7c028e6e47d",
+			"headers": "Authorization: Basic Zm9vOnlvdXJwYXNzd29yZA==\n",
+			"url": "{{url}}/api/jobs/all",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 401\"] = responseCode.code === 401;",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "foobar",
+				"password": "{{password}}",
+				"saveToRequest": true
+			},
+			"time": 1463511184985,
+			"name": "Bad username",
+			"description": "",
+			"collectionId": "0d6bd55d-2da0-99b4-46fd-cc359a6e001d",
+			"responses": []
+		},
+		{
+			"id": "78f41e1c-b5e1-693d-729f-8b05dc3fe37a",
+			"headers": "Authorization: Basic eW91cnVzZXJuYW1lOnlvdXJwYXNzd29yZA==\n",
+			"url": "{{url}}/api/files/foobar123",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 404\"] = responseCode.code === 404;\n\ntests[\"Body is correct\"] = responseBody === \"\";",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{username}}",
+				"password": "{{password}}",
+				"saveToRequest": true
+			},
+			"time": 1463511241611,
+			"name": "GET non-existant file",
+			"description": "",
+			"collectionId": "0d6bd55d-2da0-99b4-46fd-cc359a6e001d",
+			"responses": []
+		},
+		{
+			"id": "95bc745b-6304-97dd-967f-1a75666afa51",
+			"headers": "Authorization: Basic eW91cnVzZXJuYW1lOnlvdXJwYXNzd29yZA==\n",
+			"url": "{{url}}/api/files/all",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{username}}",
+				"password": "{{password}}",
+				"saveToRequest": true
+			},
+			"time": 1463511222755,
+			"name": "GET all files",
+			"description": "",
+			"collectionId": "0d6bd55d-2da0-99b4-46fd-cc359a6e001d",
+			"responses": []
+		},
+		{
+			"id": "aa0bee55-f583-3348-947b-bd20744f4b50",
+			"headers": "Authorization: Basic eW91cnVzZXJuYW1lOnlvdXJwYXNzd29yZA==\n",
+			"url": "{{url}}/api/jobs/all",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{username}}",
+				"password": "{{password}}",
+				"saveToRequest": true
+			},
+			"time": 1463511164483,
+			"name": "Good username and password",
+			"description": "",
+			"collectionId": "0d6bd55d-2da0-99b4-46fd-cc359a6e001d",
+			"responses": []
+		},
+		{
+			"id": "d81a4ab7-c1c4-9a20-c0c1-94d54decfee5",
+			"headers": "Authorization: Basic eW91cnVzZXJuYW1lOnlvdXJwYXNzd29yZA==\n",
+			"url": "{{url}}/api/files/iris.txt",
+			"preRequestScript": null,
+			"pathVariables": {},
+			"method": "GET",
+			"data": null,
+			"dataMode": "params",
+			"version": 2,
+			"tests": "tests[\"Status code is 200\"] = responseCode.code === 200;\n\ntests[\"Body matches string\"] = responseBody.has(\"One,Two,Three\");",
+			"currentHelper": "basicAuth",
+			"helperAttributes": {
+				"id": "basic",
+				"username": "{{username}}",
+				"password": "{{password}}",
+				"saveToRequest": true
+			},
+			"time": 1463528303753,
+			"name": "GET real file",
+			"description": "",
+			"collectionId": "0d6bd55d-2da0-99b4-46fd-cc359a6e001d",
+			"responses": []
+		}
+	]
+}

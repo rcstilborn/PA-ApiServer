@@ -10,9 +10,22 @@ exports.retrieve = function(req, res){
   res.sendFile(req.params.name, {root:"./files/" + req.user.id});
 };
 
+exports.list_all = function(req, res){
+  console.log('files.list_all');
+  fs.readdir("./files/" + req.user.id, function(err, files) {
+    if (err) {
+      console.error(err);
+      return res.status(404).end();
+    }
+    console.log("Directory listing retrieved successfully!");
+    return res.json(files);
+  });
+};
+
 exports.create = function(req, res){
   console.log('files.create: ' + req.file.originalname);
-  fs.renameSync(req.file.path, "./files/" + req.user.id + "/" + req.file.originalname, function(err) {
+  console.log('renaming: ' + req.file.path + ' to: ' + "./files/" + req.user.id + "/" + req.file.originalname);
+  fs.rename(req.file.path, "./files/" + req.user.id + "/" + req.file.originalname, function(err) {
     if (err) {
       console.error(err);
       return res.status(404).end();

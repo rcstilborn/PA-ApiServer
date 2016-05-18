@@ -9,6 +9,7 @@ exports = module.exports = function(app, passport) {
 
   // File based actions
   app.post('/api/files', require('./files').create);
+  app.get('/api/files/all', require('./files').list_all);
   app.get('/api/files/:name', require('./files').retrieve);
   app.delete('/api/files/:name', require('./files').delete);
 

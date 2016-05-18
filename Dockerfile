@@ -28,6 +28,7 @@ RUN apt-get install -y nodejs
 
 # Create app directory
 RUN mkdir -p /usr/src/app
+RUN mkdir -p /usr/src/app/files/123456
 WORKDIR /usr/src/app
 
 # Install app dependencies

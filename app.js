@@ -11,7 +11,7 @@ var passport = require('passport'),
 var app = express();
 
 // Set up logging
-app.use(require('morgan')('dev'));
+app.use(require('morgan')('combined'));
 
 // Set up file uploading
 app.use(multer({dest:'./files/tmp'}).single('file'));
