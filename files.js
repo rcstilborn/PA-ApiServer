@@ -7,7 +7,14 @@ var fs = require('fs');
 
 exports.retrieve = function(req, res){
   console.log('files.retrieve: ' + req.params.name);
-  res.sendFile(req.params.name, {root:"./files/" + req.user.id});
+  fs.access("./files/" + req.user.id + "/" + req.params.name, fs.R_OK, function(err) {
+    if (err) {
+      console.error(err);
+      return res.status(404).end();
+    }
+    console.log("File found - sending");
+    return res.sendFile(req.params.name, {root:"./files/" + req.user.id});
+  });
 };
 
 exports.list_all = function(req, res){
