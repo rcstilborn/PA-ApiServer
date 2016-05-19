@@ -6,7 +6,8 @@
     "start": "node app.js",
     "test": "./node_modules/mocha/bin/mocha --recursive tests",
     "acc_test_s": "tests/staging_acceptance_test",
-    "acc_test_l": "tests/local_acceptance_test"},
+    "acc_test_l": "tests/local_acceptance_test"
+  },
   "dependencies": {
     "body-parser": "latest",
     "express": ">= 4.0.0",
