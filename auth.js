@@ -9,10 +9,10 @@ exports = module.exports = function(app, passport) {
   passport.use(new BasicStrategy({},
     function(username, password, done) {
       if (username.valueOf() === 'yourusername' && password.valueOf() === 'yourpassword') {
-        console.log("User authorized");
+        //console.log("User authorized");
         return done(null, {id: "123456"});
       } else {
-        console.log("User not authorized");
+        //console.log("User not authorized");
         return done(null, false, {message: 'Unknown user or invalid password'});
       }
     }
