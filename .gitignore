@@ -1,6 +1,7 @@
-files
 .idea
 node_modules
 npm-debug.log
 npm-debug.log
 npm-debug.log.*
+files/123456/output.txt
+files/123456/testfile.txt
