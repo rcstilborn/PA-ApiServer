@@ -3,3 +3,5 @@ README.md
 .gitignore
 .idea
 .git
+files/123456/testfile.txt
+files/123456/output.txt
