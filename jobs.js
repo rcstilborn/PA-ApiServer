@@ -68,7 +68,7 @@ exports.start = function(req, res){
 
       var R  = spawn(scriptname, params, opts);
       R.on('exit',function(code){
-        console.log('got exit event with code: '+code + " at: " + new Date().toTimeString().substr(0, 8));
+        console.log('Got exit event for job: ' + R.pid + ' with code: '+ code + " at: " + new Date().toTimeString().substr(0, 8));
         running_jobs[R.pid].status = 'terminated';
         running_jobs[R.pid].exit_code = code;
         running_jobs[R.pid].end_time = Date.now();
@@ -76,7 +76,7 @@ exports.start = function(req, res){
         console.log(running_jobs);
       });
       R.on('error',function(err){
-        console.log('got error event: '+err);
+        console.log('Got error event for job: ' + R.pid + ' : ' + err);
         running_jobs[R.pid].status = 'terminated';
         running_jobs[R.pid].exit_code = err;
         running_jobs[R.pid].end_time = Date.now();
@@ -84,7 +84,7 @@ exports.start = function(req, res){
         console.log(running_jobs);
       });
 
-      console.log("Job started at: " + new Date().toTimeString().substr(0, 8));
+      console.log('Job ' + R.pid + ' started at: ' + new Date().toTimeString().substr(0, 8));
       running_jobs[R.pid] = {pid: R.pid, child_process: R, status: "running", start_time: Date.now(), inputfilename: inputfilename, outputfilename: outputfilename};
       console.log(running_jobs);
 
@@ -112,10 +112,10 @@ exports.list_all = function(req, res){
 };
 
 exports.delete = function(req, res){
-  console.log('jobs.delete: ' + req.params.jobid);
+  console.log('jobs.delete: ' + req.params.jobid + ' at: ' + new Date().toTimeString().substr(0, 8));
   if(running_jobs[req.params.jobid]) {
     if(running_jobs[req.params.jobid].status == 'running') {
-      running_jobs[req.params.jobid].child_process.kill();
+      return res.status(400).send("Cannot delete running job.");                                                                                                                  fs.X_OK
     }
     delete running_jobs[req.params.jobid];
     res.end();

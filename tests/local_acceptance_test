@@ -4,7 +4,7 @@ docker run -d -p 3000:3000 --name local_test_container local_test_image
 
 # Run the postman collection
 cd tests
-../node_modules/newman/bin/newman -u https://www.getpostman.com/collections/7e2ce7f78360dc5b9cd6 -e Local.postman_environment.json
+../node_modules/newman/bin/newman -u https://www.getpostman.com/collections/7e2ce7f78360dc5b9cd6 -e Local.postman_environment.json -O testoutput.txt
 cd ../
 
 # stop and remove the container
