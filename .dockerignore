@@ -1,8 +1,11 @@
 tests
+node_modules
 README.md
 .gitignore
 .idea
 .git
+npm-debug.log
+npm-debug.log.*
 files/123456/testfile.txt
 files/123456/output.txt
 files/123456/outfile.txt
